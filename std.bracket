@@ -1,0 +1,14 @@
+var v := Bracket 1.0.3
+
+fn imports
+~ ;@Init
+~ var stdLoaded := true
+end fn
+
+fn cls
+~ sys cls
+end fn
+
+fn std.version
+~ print Version: #[v]
+end fn
