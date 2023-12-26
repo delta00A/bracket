@@ -115,9 +115,15 @@ def parse(text):
     elif line[0] == "saveinput":
       print(replacevar(' '.join(line[2:]), variables))
       variables[line[1]] = input()
+    elif line[0] == "->include":
+      with open(line[1]+".bracket", 'r') as f:
+          parse(f.read()+"\nvar runImports := true\nif #[runImports] == true imports")
+    elif line[0] == "sys":
+        os.system(' '.join(line[1:]))
     else:
       if line[0] != "":
-        print(Base.FAIL+f"[{c}] KeywordError: {line[0]} is not a keyword."+Base.END)
+        print(Base.FAIL+f"[{c}] KeywordError: {line[0]} is not a keyword.To call a function, use the keyword \"@\""+Base.END)
+        
         sys.exit()
 with open("main.bracket", 'r') as f:
   parse(f.read()+"\nvar runMain := true\nif #[runMain] == true main")
