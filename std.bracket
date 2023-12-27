@@ -16,25 +16,31 @@ end fn
 fn std.version
 ~ print Version: #[v]
 end fn
+fn return fnName returnValue
+~ var #[fnName] := #[returnValue]
+end fn
 
 fn math.add num1 num2
-~ py returnVal #[num1] + #[num2]
+~ py mathed #[num1] + #[num2]
+~ @ return math.add mathed
 end fn
 fn math.subtract num1 num2
-~ py returnVal #[num1] - #[num2]
+~ py mathed #[num1] - #[num2]
+~ @ return math.subtract mathed
 end fn
 fn math.multiply num1 num2
-~ py returnVal #[num1] * #[num2]
+~ py mathed #[num1] * #[num2]
+~ @ return math.multiply mathed
 end fn
 fn math.divide num1 num2
-~ py returnVal #[num1] / #[num2]
+~ py mathed #[num1] / #[num2]
+~ @ return math.divide mathed
 end fn
 fn math.random num1 num2
-~ py returnVal randint(num1,num2)
+~ py mathed randint(num1,num2)
+~ @ return math.random mathed
 end fn
 fn math.power base exponent
-~ py returnVal pow(#[base], #[exponent])
-end fn
-fn math.squareRoot number
-~ py returnVal sqrt(#[number])
+~ py mathed pow(#[base], #[exponent])
+~ @ return math.power mathed
 end fn
