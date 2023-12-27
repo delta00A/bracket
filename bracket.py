@@ -1,7 +1,6 @@
 import os
 import sys
 import time
-import random
 variables = {"null": "", "whitespace": " ", "newline": "\n", "tab": "\t"}
 fns = {}
 
@@ -62,7 +61,7 @@ def merge_two_dicts(x, y):
   z.update(y)    # modifies z with keys and values of y
   return z
   
-def parse(text):
+def parse(text,caller):
       global c
 
       global variables
@@ -99,47 +98,46 @@ def parse(text):
            infunc = False
            fns[fnName] = curfunc
         elif line[0] == "@":
-          parse(replacevar('\n'.join(fns[line[1]]['body']), merge_two_dicts(variables,dict(zip(fns[line[1]]['args'], line[2:])))))
+          parse(replacevar('\n'.join(fns[line[1]]['body']), merge_two_dicts(variables,dict(zip(fns[line[1]]['args'], line[2:])))),line[1])
         elif line[0] == "if":
           op = line[2]
           l =  replacevar(' '.join(line), variables).split(" ")
           if op == "==":
             if l[1] == l[3]:
-              parse('\n'.join(fns[line[4]]['body']))
+              parse('\n'.join(fns[line[4]]['body']),line[4])
           elif op == "!=":
             if l[1] != l[3]:
-              parse('\n'.join(fns[line[4]]['body']))
+              parse('\n'.join(fns[line[4]]['body']),line[4])
           elif op == ">=":
             if int(l[1]) >= int(l[3]):
-              parse('\n'.join(fns[line[4]]['body']))
+              parse('\n'.join(fns[line[4]]['body']),line[4])
           elif op == "<=":
             if int(l[1]) <= int(l[3]):
-              parse('\n'.join(fns[line[4]]['body']))
+              parse('\n'.join(fns[line[4]]['body']),line[4])
         elif line[0] == "while":
           op = line[2]
           l =  replacevar(' '.join(line), variables).split(" ")
           if op == "==":
             while l[1] == l[3]:
-              parse('\n'.join(fns[line[4]]))
+              parse('\n'.join(fns[line[4]]['body']),line[4])
           elif op == "!=":
             while l[1] != l[3]:
-              parse('\n'.join(fns[line[4]]))
+              parse('\n'.join(fns[line[4]]['body']),line[4])
           if op == ">=":
               while int(l[1]) >= int(l[3]):
-                parse('\n'.join(fns[line[4]]))
+                parse('\n'.join(fns[line[4]]['body']),line[4])
           if op == "<=":
               while int(l[1]) <= int(l[3]):
-               parse('\n'.join(fns[line[4]]))
+                parse('\n'.join(fns[line[4]]['body']),line[4])
         elif line[0] == "py":
           codeToExecute = replacevar(' '.join(line[2:]), variables)
           #print(variables[line[1]])
           variables[line[1]] = eval(codeToExecute)
         elif line[0] == "saveinput":
-          print(replacevar(' '.join(line[2:]), variables))
-          variables[line[1]] = input()
+          variables[line[1]] = input(replacevar(' '.join(line[2:]), variables))
         elif line[0] == "->include":
           with open(line[1]+".bracket", 'r') as f:
-              parse(f.read()+"\nvar runImports := true\nif #[runImports] == true imports")
+              parse(f.read()+"\nvar runImports := true\nif #[runImports] == true imports",0)
         elif line[0] == "->f":
           with open(line[1]+".bracket", 'r') as f:
              parse(f.read())
@@ -151,10 +149,11 @@ def parse(text):
           variables[line[1]] = variables[line[2]][int(line[3])] 
         elif line[0] == "sleep":
           time.sleep(int(line[1])/1000)
+          
         else:
           if line[0] != "" and line[0] != 'args':
             print(Base.FAIL+f"[{c}] KeywordError: {line[0]} is not a keyword.To call a function, use the keyword \"@\""+Base.END)
 
             sys.exit()
 with open("main.bracket", 'r') as f:
-      parse(f.read()+"\nvar runMain := true\nif #[runMain] == true main")
+      parse(f.read()+"\nvar runMain := true\nif #[runMain] == true main",0)
