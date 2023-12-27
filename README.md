@@ -1,36 +1,32 @@
-# Bracket: A Nimble and Expressive Functional Programming Language
+# Bracket 101 
+Welcome to the comprehensive documentation for Bracket, an elegantly designed, lightweight interpreted functional programming language crafted to empower developers with expressive and efficient code.
 
-Bracket distinguishes itself as a lightweight and interpreted functional programming language, placing a premium on simplicity and expressiveness in its intricately designed syntax and structure.
-
-## Getting Started: Initiating Your Journey with Bracket File Creation
-
-Embark on your programming journey with Bracket by laying the foundation of your code. Commence with the establishment of a main function, which serves as an introductory glimpse into the language's fundamental syntax:
+## Quick Start
+To embark on your Bracket programming journey, initiate your code with the definition of a main function, exemplified below:
 
 ```bracket
 fn main
-~ print Hello, World!
+~ print "Hello, World!"
 end fn
 ```
 
-# Comprehensive Documentation
+# Documentation
 
-## Functions: Crucial Building Blocks of Code
-
-Functions, the bedrock of Bracket's programming paradigm, play a pivotal role in code construction. Use the `fn` keyword to meticulously define a function and employ the `@` symbol for its seamless execution:
+## Functions
+In Bracket, functions play a pivotal role in code organization. They are declared using the `fn` keyword, allowing for modular and reusable code, and the keyword `@` is used to invoke them. Here's an illustrative example of defining and invoking a function:
 
 ```bracket
-fn [functionName]
+fn functionName
 ~ [code]
 end fn
 
 fn main
-~ @ [fnName]
+~ @ functionName
 end fn
 ```
 
-## Includes: Seamless Integration of External Files
-
-Immerse yourself in the streamlined integration of external files into your program through the utilization of the `->include` keyword:
+## Includes
+Enhance the functionality of your program by including external files using the `->include` keyword:
 
 ```bracket
 ->include std
@@ -39,9 +35,8 @@ fn main
 end fn
 ```
 
-### Module Creation: Elevating Code Modularity
-
-Take code modularity to new heights with the creation of modular components through the `imports` function:
+### Making a Module
+Modules provide a structured way to encapsulate related code. A module example is presented below:
 
 ```bracket
 fn imports
@@ -49,18 +44,12 @@ fn imports
 end fn
 ```
 
-Modules, diverging from a conventional main function, embrace an "Imports" function, adding a layer of sophistication to code organization.
+Conventionally, modules employ the `Imports` function instead of a primary `main` function.
 
-## Conditional Statements: Mastering Logic and Flow Control
-
-Embark on a journey of logical prowess with a comprehensive exploration of conditional statements. Uncover an array of operators governing both `if` and `while` statements. Dive into the syntax intricacies and learn the art of executing functions within these statement constructs:
+## If & While Statements
+Bracket offers robust control flow statements with the `if` and `while` constructs. Various operators, including `>=`, `<=`, `!=`, and `==`, facilitate intricate conditionals. An example of a while loop and an if statement is provided:
 
 ```bracket
->= (Greater than)
-<= (Less than)
-!= (Not Equal)
-== (Equal)
-
 ->include std
 fn mainLoop
 ~ @ cls
@@ -71,30 +60,30 @@ fn main
 end fn
 ```
 
-## Variables: Dynamic Data Storage Unveiled
-
-Delve into the dynamic nature of data storage within Bracket by acquainting yourself with the meticulous process of variable definition and its pervasive incorporation throughout your code:
+## Variables
+Variables in Bracket are declared using the `var` keyword, promoting clarity and flexibility in your code. Dynamically including variables is seamlessly integrated:
 
 ```bracket
-var [VarName] := [Value]
+var VarName := [Value]
+
 print #[VarName]
 ```
 
-## Calculations: Harnessing the Power of Computational Operations
-
-Unleash the full potential of computational operations with the `py` command, steering your code toward sophisticated calculations:
+## Calculations
+Bracket introduces a streamlined approach to calculations using the `py` command:
 
 ```bracket
 py Calculation 1+1
 print #[Calculation]
 ```
 
-The variable specified after the `py` command serves as the designated storage location for the calculated result.
+The variable specified after `py` serves as a container for the calculated result.
 
-## System Commands: Seamlessly Interacting with the Environment
-
-Effortlessly execute system commands with the `sys` keyword, facilitating seamless interaction with the programming environment:
+## System Commands
+Effortlessly execute system commands within your Bracket program using the `sys` keyword:
 
 ```bracket
 sys cls
 ```
+
+Dive into the wealth of features offered by Bracket, empowering you to construct expressive, functional programs with precision and elegance. Happy coding!
