@@ -1,8 +1,10 @@
-# Bracket 101 
-Welcome to the comprehensive documentation for Bracket, an elegantly designed, lightweight interpreted functional programming language crafted to empower developers with expressive and efficient code.
+## Bracket 101
 
-## Quick Start
-To embark on your Bracket programming journey, initiate your code with the definition of a main function, exemplified below:
+### Welcome
+Welcome to Bracket, an elegant, lightweight, interpreted functional programming language designed to empower developers with expressive and efficient code.
+
+### Quick Start
+Initiate your Bracket programming journey by defining a main function. Here's an example:
 
 ```bracket
 fn main
@@ -10,10 +12,10 @@ fn main
 end fn
 ```
 
-# Documentation
+### Documentation
 
-## Functions
-In Bracket, functions play a pivotal role in code organization. They are declared using the `fn` keyword, allowing for modular and reusable code, and the keyword `@` is used to invoke them. Here's an illustrative example of defining and invoking a function:
+#### Functions
+Functions are central to Bracket's code organization. Declare them using `fn` and invoke with `@`. Example:
 
 ```bracket
 fn functionName
@@ -25,18 +27,18 @@ fn main
 end fn
 ```
 
-## Includes
-Enhance the functionality of your program by including external files using the `->include` keyword:
+#### Includes
+Enhance functionality by including external files with `->include`:
 
 ```bracket
 ->include std
 fn main
-~ [code goes here]
+~ [code]
 end fn
 ```
 
-### Making a Module
-Modules provide a structured way to encapsulate related code. A module example is presented below:
+##### Making a Module
+Structurally encapsulate related code in modules:
 
 ```bracket
 fn imports
@@ -44,15 +46,16 @@ fn imports
 end fn
 ```
 
-Conventionally, modules employ the `Imports` function instead of a primary `main` function.
+Conventionally, modules use the `Imports` function instead of a primary `main`.
 
-## If & While Statements
-Bracket offers robust control flow statements with the `if` and `while` constructs. Various operators, including `>=`, `<=`, `!=`, and `==`, facilitate intricate conditionals. An example of a while loop and an if statement is provided:
+#### If & While Statements
+Control flow with `if` and `while`. Operators include `>=`, `<=`, `!=`, and `==`. Example:
 
 ```bracket
 ->include std
 fn mainLoop
 ~ @ cls
+~ sleep 1000
 end fn
 
 fn main
@@ -60,8 +63,8 @@ fn main
 end fn
 ```
 
-## Variables
-Variables in Bracket are declared using the `var` keyword, promoting clarity and flexibility in your code. Dynamically including variables is seamlessly integrated:
+#### Variables
+Declare variables with `var` for clarity and flexibility:
 
 ```bracket
 var VarName := [Value]
@@ -69,21 +72,33 @@ var VarName := [Value]
 print #[VarName]
 ```
 
-## Calculations
-Bracket introduces a streamlined approach to calculations using the `py` command:
+#### Calculations
+Streamlined calculations with `py`:
 
 ```bracket
 py Calculation 1+1
 print #[Calculation]
 ```
 
-The variable specified after `py` serves as a container for the calculated result.
-
-## System Commands
-Effortlessly execute system commands within your Bracket program using the `sys` keyword:
+#### System Commands
+Execute system commands with `sys`:
 
 ```bracket
 sys cls
 ```
 
-Dive into the wealth of features offered by Bracket, empowering you to construct expressive, functional programs with precision and elegance. Happy coding!
+#### Sleep
+Introduce a sleep function to pause execution:
+
+```bracket
+sleep milliseconds
+```
+
+#### Save Input
+Capture user input with `saveinput`:
+
+```bracket
+saveinput variableName "Enter your input: "
+```
+
+Dive into Bracket's features to construct expressive, functional programs with precision and elegance. Happy coding!
